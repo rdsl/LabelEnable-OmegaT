@@ -1,0 +1,60 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+
+# makelabel: OmegaT label-enabling label directory creation script.
+# Copyright (C): 2016, Ramiro Duarte Simoes Lopes
+#
+# This file is part of LabelEnable OmegaT
+#
+# initproject is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+# WARNING: A directory named 'label' will be removed!
+# Uncomment next line to use the script.
+# rm -rf label
+
+for project in $(ls project); do
+
+  path_project=project/${project}
+  text=$(<${path_project}/omegat.project)
+  source_lang=${text##*<source_lang>}
+  source_lang=${source_lang%%<*}
+  target_lang=${text##*<target_lang>}
+  target_lang=${target_lang%%<*}
+  lang_pair=${source_lang}_${target_lang}
+  lang_pair=${lang_pair,,}
+
+  if [[ -d $path_project/label ]]; then
+    for label in "$path_project"/label/*; do
+      label=${label##*/}
+      mkdir -p label/"$lang_pair"/"$label"/{project,glossary,tm}
+      ln -srf "$path_project"  label/"$lang_pair"/"$label"/project/
+      ln -f "$path_project"/"$project"-omegat.tmx \
+         label/"$lang_pair"/"$label"/tm/
+    done
+  fi
+
+  if [ -s "$path_project"/glossary/glossary.txt ]; then
+    while read word_source word_target comment; do
+      if [[ $comment == *"#"* ]]; then
+        label=${comment##*#}
+	comment=${comment%%#*}
+        mkdir -p label/"$lang_pair"/"$label"/{project,glossary,tm}
+	printf "%s\t%s\t%s\n" "$word_source" "$word_target" "$comment" >> \
+	       label/"$lang_pair"/"$label"/glossary/"$label".txt
+      fi
+    done <"$path_project"/glossary/glossary.txt
+  fi
+
+done
