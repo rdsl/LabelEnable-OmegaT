@@ -5,7 +5,7 @@ Bash scripts providing labelling functionality to OmegaT projects.
 Ramiro Duarte Simões Lopes
 
 ## Files
-- makelabel (*creates label directory structre.*)
+- makelabel (*creates label directory structure.*)
 - initproject (*initializes translation project directory.*)
 
 ## Latest Version
