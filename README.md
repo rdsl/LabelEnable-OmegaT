@@ -37,7 +37,7 @@ with #insertlabel. Only the file ./glossary/glossary.txt will be used.
 
 ### Run
 - makelabel - to create the label directory and compile the glossaries.
-- initproject projectname - to add the apropriate translation memories and
+- initproject projectpath - to add the apropriate translation memories and
 glossaries to the project directory, based on the project's labels.
 
 ## Requirements

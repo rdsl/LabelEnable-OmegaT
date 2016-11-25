@@ -20,9 +20,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-# WARNING: A directory named 'label' will be removed!
+# WARNING: A directory named "label" will be removed!
 # Uncomment next line to use the script.
-# rm -rf label
+rm -rf label
 
 for project in $(ls project); do
 
@@ -40,8 +40,10 @@ for project in $(ls project); do
       label=${label##*/}
       mkdir -p label/"$lang_pair"/"$label"/{project,glossary,tm}
       ln -srf "$path_project"  label/"$lang_pair"/"$label"/project/
-      ln -f "$path_project"/"$project"-omegat.tmx \
-         label/"$lang_pair"/"$label"/tm/
+      if [[ -f "$path_project"/"$project"-omegat.tmx ]]; then
+        ln -f "$path_project"/"$project"-omegat.tmx \
+           label/"$lang_pair"/"$label"/tm/
+      fi
     done
   fi
 
