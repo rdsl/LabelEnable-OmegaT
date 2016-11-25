@@ -1,4 +1,4 @@
-# LabelEnable OmegaT
+# LabelEnable-OmegaT
 Bash scripts providing labelling functionality to OmegaT projects.
 
 ## Author
@@ -9,7 +9,7 @@ Ramiro Duarte Simões Lopes
 - initproject (*initializes translation project directory.*)
 
 ## Latest Version
-[LabelEnable OmegaT at GitHub](https://github.com/rdsl/labelenable-omegat)
+[LabelEnable-OmegaT at GitHub](https://github.com/rdsl/labelenable-omegat)
 
 ## Licensing
 Please, see LICENSE file.
