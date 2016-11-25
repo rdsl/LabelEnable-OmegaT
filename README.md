@@ -5,11 +5,11 @@ Bash scripts providing labelling functionality to OmegaT projects.
 Ramiro Duarte Simões Lopes
 
 ## Files
-- makelabel (*Creates label directory structre.*)
-- initproject (*Initializes translation project directory.*)
+- makelabel (*creates label directory structre.*)
+- initproject (*initializes translation project directory.*)
 
 ## Latest Version
-[labelenable at GitHub](https://github.com/rdsl/labelenable)
+[LabelEnable OmegaT at GitHub](https://github.com/rdsl/labelenable-omegat)
 
 ## Licensing
 Please, see LICENSE file.
